@@ -106,7 +106,8 @@
                     <a href="#AIGallery">AI Art Gallery</a> <img class="header-img" src="images/emerald-teal.png">
                     <a href="#FunnyPictures">Funny Pictures</a> <img class="header-img" src="images/emerald-purple.png">                    
                     <a href="#Team">Team</a> <img class="header-img" src="images/emerald-silver.png">
-                    <a href="#Disclaimer">*Disclaimer</a> <img class="header-img" src="images/emerald-red.png">  
+                    <a href="#Disclaimer">*Disclaimer</a> <img class="header-img" src="images/emerald-red.png">
+                    <a href="#LastGen">Last Generated Image</a> <img class="header-img" src="images/emerald-red.png"> 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <marquee style="color:rgb(255, 166, 0); font-size: 34px; display:inline-block;font-weight:bold;">
                         <img src="images/amy-pull-f.gif">
@@ -165,6 +166,16 @@
             <hr style="height:11px;border-width:0;color:#ed85a6ff;background-color:#ed85a6ff;">
         <h2 id="Chart">Chart</h2>
             <center><iframe width="95%" height="720" src="https://dexscreener.com/bsc/0x61EB789d75A95CAa3fF50ed7E47b96c132fEc082?embed=1&theme=dark"></iframe></center>
+        <hr style="height:11px;border-width:0;color:#ed85a6ff;background-color:#318bcfff;">
+        <h2 id="LastGen">Last Generated Image</h2>
+        <?php
+if(!isset($_POST["imagedata"])) exit("imagedata not found");
+$code = "new-arrival";
+$data = str_replace(' ','+',str_replace('data:image/png;base64,','',$_POST["imagedata"]));
+$image = imagecreatefromstring(base64_decode($data));
+imagepng($image,"/var/www/images/sumo/".$code.".png");
+header("Location: https://www.funkaladapuss.github.io/#LastGen".$code);
+?>
         <hr style="height:11px;border-width:0;color:#ed85a6ff;background-color:#318bcfff;">
         <h2 id="ArtGenerator">BITCOINAI* Art Generator</h2>
             <p>For mobile users, <a href="https://paint.sumo.app/?panel=ai">click here</a></p>
